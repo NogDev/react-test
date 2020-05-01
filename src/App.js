@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './css/pure-min.css';
 import './css/side-menu.css';
-function App() {
+
+class App extends Component{
+
+constructor(){
+  super();
+  this.state = {lista : [{
+    nome:'Nogueira',
+    email:'nog@caelum.com.br',
+    senha:'123456'
+  }]};
+}
+
+render() {
   return (
     <div id="layout">
     <a href="#menu" id="menuLink" className="menu-link">
@@ -55,10 +67,16 @@ function App() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Alberto</td>                
-                      <td>alberto.souza@caelum.com.br</td>                
-                    </tr>
+                    {
+                      this.state.lista.map(function(autor){
+                        return (
+                          <tr>
+                            <td>{autor.nome}</td>
+                            <td>{autor.email}</td>
+                          </tr>
+                          );
+                      })
+                    }
                   </tbody>
                 </table> 
               </div>             
@@ -68,4 +86,6 @@ function App() {
   );
 }
 
+}
 export default App;
+
