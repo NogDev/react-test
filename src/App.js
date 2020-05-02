@@ -10,7 +10,7 @@ constructor(){
   this.state = {lista : []};
 }
 
-componentWillMount(){
+componentDidMount(){
   $.ajax({
       url:"http://cdc-react.herokuapp.com/api/autores",
       dataType: 'json',
@@ -49,11 +49,11 @@ render() {
                 <form className="pure-form pure-form-aligned">
                   <div className="pure-control-group">
                     <label htmlFor="nome">Nome</label> 
-                    <input id="nome" type="text" name="nome" value=""  />                  
+                    <input id="nome" type="text" name="nome"   />                  
                   </div>
                   <div className="pure-control-group">
                     <label htmlFor="email">Email</label> 
-                    <input id="email" type="email" name="email" value=""  />                  
+                    <input id="email" type="email" name="email"   />                  
                   </div>
                   <div className="pure-control-group">
                     <label htmlFor="senha">Senha</label> 
@@ -78,7 +78,7 @@ render() {
                     {
                       this.state.lista.map(function(autor){
                         return (
-                          <tr>
+                          <tr key={autor.id}>
                             <td>{autor.nome}</td>
                             <td>{autor.email}</td>
                           </tr>
